@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Next.js in Firefox DE",
+      "type": "firefox",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}",
+      // Konfigurasi serverReadyAction yang diperbaiki:
+      "serverReadyAction": {
+        "action": "openExternally",
+        // Pattern untuk menangkap URL dari log output Next.js (http://localhost:3000)
+        "pattern": "started server on .*"
+        // Anda juga bisa mencoba pola ini jika pola di atas tidak berhasil:
+        // "pattern": "- Local:.+(https?://.+)"
+      }
+    }
+  ]
+}
