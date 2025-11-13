@@ -1,6 +1,11 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
-import Countdown from './Countdown'
+import dynamic from 'next/dynamic'
+
+// Nonaktifkan SSR untuk Countdown agar tidak muncul mismatch
+const Countdown = dynamic(() => import('./Countdown'), { ssr: false })
 
 export default function Hero() {
   return (
@@ -9,11 +14,11 @@ export default function Hero() {
         {/* Kiri: Frame konten */}
         <div
           className='
-      flex-1 max-w-md lg:max-w-xl bg-black/80 p-6 md:p-8 lg:p-10 rounded-2xl border border-lime-400
-      backdrop-blur-sm z-20 
-      md:absolute md:left-[5%] lg:left-[7%] md:top-1/2 md:-translate-y-1/2
-      flex flex-col gap-6 md:gap-8
-    '>
+            flex-1 max-w-md lg:max-w-xl bg-black/80 p-6 md:p-8 lg:p-10 rounded-2xl border border-lime-400
+            backdrop-blur-sm z-20 
+            md:absolute md:left-[5%] lg:left-[7%] md:top-1/2 md:-translate-y-1/2
+            flex flex-col gap-6 md:gap-8
+          '>
           {/* Headline Section */}
           <div className='space-y-3 md:space-y-4'>
             <h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight'>
