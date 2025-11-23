@@ -1,73 +1,167 @@
 'use client'
 
-import Link from 'next/link'
-import Image from 'next/image'
 import dynamic from 'next/dynamic'
+import { motion } from 'framer-motion'
+import Button from '@/components/ui/Button'
+import VerticalTicker from '@/components/ui/VerticalTicker'
 
-// Nonaktifkan SSR untuk Countdown agar tidak muncul mismatch
 const Countdown = dynamic(() => import('./Countdown'), { ssr: false })
 
 export default function Hero() {
   return (
-    <section className='relative w-full min-h-screen flex items-center bg-black text-white overflow-hidden pt-30'>
-      <div className='container mx-auto px-6 flex flex-col md:flex-row items-center gap-10 relative py-16 md:py-0'>
-        {/* Kiri: Frame konten */}
-        <div
-          className='
-    flex-1
-    max-w-md md:max-w-[520px] lg:max-w-xl
-    bg-black/80 p-6 md:p-8 lg:p-10 rounded-2xl border border-lime-400
-    backdrop-blur-sm z-20 
-    md:absolute md:left-[5%] lg:left-[7%] md:top-1/2 md:-translate-y-1/2
-    flex flex-col gap-6 md:gap-8
-  '>
-          {/* Headline Section */}
-          <div className='space-y-3 md:space-y-4'>
-            <h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight'>
-              MUBLOC
-            </h1>
-            <p className='text-xl sm:text-2xl md:text-3xl text-gray-200'>
-              WORLD RANKING EVENT
-            </p>
-            <p className='text-base sm:text-lg md:text-xl text-gray-300'>
-              Challenge your navigation and physical skills in the international
-              Orienteering Championship.
-            </p>
-          </div>
+    <section className='relative w-full min-h-screen flex items-center justify-center bg-custom-dark text-custom-light overflow-hidden'>
+      {/* Background Aurora */}
+      <div className='absolute inset-0 bg-aurora' />
 
-          {/* Buttons Section */}
-          <div className='flex flex-col md:flex-row gap-3 md:gap-4'>
-            <Link
-              href='/registration'
-              className='bg-lime-400 text-black px-6 md:px-8 py-3 rounded-lg font-semibold hover:bg-lime-300 transition text-center'>
-              Register Now
-            </Link>
-            <Link
-              href='/events'
-              className='border border-white text-white px-6 md:px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-black transition text-center'>
-              View Events
-            </Link>
-          </div>
-
-          {/* Countdown Section */}
-          <div className='mt-3 md:mt-4'>
-            <Countdown targetDate='2026-10-24T00:00:00' />
-          </div>
-        </div>
-
-        {/* Kanan: Gambar */}
-        <div className='relative flex-1 w-full md:w-auto mt-10 md:mt-0'>
-          <div className='relative w-full h-64 sm:h-80 md:w-[520px] md:h-[580px] rounded-2xl overflow-hidden shadow-lg md:ml-auto md:mr-[7%]'>
-            <Image
-              src='/images/10.jpg'
-              alt='Orienteering background'
-              fill
-              className='object-cover object-center'
-              priority
-            />
-          </div>
-        </div>
+      {/* Floating Orbs */}
+      <div className='absolute inset-0'>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 0.15, scale: 1 }}
+          transition={{ duration: 4, repeat: Infinity, repeatType: 'reverse' }}
+          className='absolute top-1/4 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl'
+        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.7 }}
+          animate={{ opacity: 0.1, scale: 1.1 }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            repeatType: 'reverse',
+            delay: 1,
+          }}
+          className='absolute bottom-1/3 right-1/3 w-80 h-80 bg-black/20 rounded-full blur-3xl'
+        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 0.08, scale: 1.2 }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            repeatType: 'reverse',
+            delay: 2,
+          }}
+          className='absolute top-1/2 left-1/2 w-64 h-64 bg-neutral-900/20 rounded-full blur-2xl'
+        />
       </div>
+
+      {/* CONTENT WRAPPER */}
+      <div className='w-full px-4 md:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-6 lg:gap-8 pt-16 md:pt-20 lg:pt-24 pb-10 relative z-10'>
+        {/* LEFT CONTENT */}
+        <motion.div
+          initial={{ opacity: 0, x: -80 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1.2, ease: 'easeOut' }}
+          className='flex-1 max-w-md md:max-w-xl bg-custom-surface/90 p-6 md:p-8 rounded-2xl border border-primary/20 backdrop-blur-xl flex flex-col gap-6 shadow-2xl'>
+          {/* Title & Description */}
+          <div className='space-y-4'>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.3 }}
+              className='text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight'
+              style={{
+                background:
+                  'linear-gradient(135deg, #1e3a8a, #8a00c4, #ec4899, #3b82f6)',
+                backgroundSize: '300% 300%',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                color: 'transparent',
+                animation: 'gradientShift 8s ease-in-out infinite',
+              }}>
+              MUBLOC
+            </motion.h1>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className='space-y-3'>
+              <p className='text-xl md:text-2xl font-bold bg-linear-to-r from-tertiary to-accent bg-clip-text text-transparent'>
+                WORLD RANKING EVENT
+              </p>
+
+              <p className='text-base md:text-lg text-custom-muted leading-relaxed font-medium'>
+                Elite Orienteering Championship where navigation mastery meets
+                physical excellence. Join athletes from across the globe in the
+                ultimate test of skill and endurance.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className='space-y-4'>
+            <div className='flex flex-col sm:flex-row gap-3'>
+              <Button
+                variant='gradient'
+                size='lg'
+                href='/registration'
+                className='flex-1 text-center shadow-lg hover:shadow-xl transition-all'>
+                🚀 Register Now
+              </Button>
+
+              <Button
+                variant='outline'
+                size='lg'
+                href='/events'
+                className='flex-1 text-center border-2 hover:scale-105 transition-transform'>
+                📅 View Events
+              </Button>
+            </div>
+
+            {/* Countdown */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.9 }}
+              className='bg-custom-dark/50 rounded-xl p-4 border border-tertiary/20'>
+              <p className='text-custom-muted text-sm font-semibold mb-2 text-center'>
+                REGISTRATION CLOSES IN
+              </p>
+              <Countdown targetDate='2026-10-24T00:00:00' />
+            </motion.div>
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 80, scale: 0.95 }}
+          animate={{ opacity: 1, x: 0, scale: 1 }}
+          transition={{ duration: 1.2, ease: 'easeOut' }}
+          className='relative flex-1 w-full md:w-auto mt-6 md:mt-0 hidden md:flex justify-center'>
+          <VerticalTicker />
+        </motion.div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2.5 }}
+        className='absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20'>
+        <div className='flex flex-col items-center space-y-2'>
+          <motion.span
+            animate={{ opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className='text-custom-muted text-xs font-semibold tracking-wider'>
+            EXPLORE MORE
+          </motion.span>
+
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            className='w-6 h-8 border-2 border-accent rounded-full flex justify-center relative'>
+            <motion.div
+              animate={{ opacity: [0.3, 1, 0.3] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className='w-1 h-3 bg-accent rounded-full mt-1'
+            />
+          </motion.div>
+        </div>
+      </motion.div>
     </section>
   )
 }

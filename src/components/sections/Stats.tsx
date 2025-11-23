@@ -1,4 +1,3 @@
-// components/sections/stats.tsx - DARK VERSION
 'use client'
 
 import { useState, useEffect } from 'react'
@@ -78,8 +77,7 @@ export default function Stats() {
   ]
 
   return (
-    <section className='py-20 bg-linear-to-b from-black to-gray-900 text-white relative overflow-hidden'>
-      {/* Background Elements - Match dengan Hero */}
+    <section className='py-20 bg-black text-white relative overflow-hidden -mt-px'>
       <div className='absolute inset-0 opacity-10'>
         <div className='absolute top-1/4 left-1/4 w-64 h-64 bg-lime-400 rounded-full blur-3xl'></div>
         <div className='absolute bottom-1/4 right-1/4 w-80 h-80 bg-lime-500 rounded-full blur-3xl'></div>
@@ -87,7 +85,6 @@ export default function Stats() {
       </div>
 
       <div className='relative z-10 container mx-auto px-6'>
-        {/* Section Header */}
         <div className='text-center mb-16'>
           <h2 className='text-4xl md:text-5xl font-bold text-white mb-4'>
             BY THE <span className='text-lime-400'>NUMBERS</span>
@@ -97,19 +94,15 @@ export default function Stats() {
           </p>
         </div>
 
-        {/* Animated Stats Grid */}
         <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8'>
           {stats.map((stat, index) => (
             <div key={index} className='relative group'>
-              {/* Main Card - Dark Theme */}
               <div className='bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-lime-400/50 transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:shadow-lime-400/10'>
-                {/* Icon with Gradient Background */}
                 <div
                   className={`w-16 h-16 bg-linear-to-r ${stat.color} rounded-2xl flex items-center justify-center text-2xl mb-4 mx-auto shadow-lg`}>
                   {stat.icon}
                 </div>
 
-                {/* Animated Number */}
                 <div className='text-center mb-2'>
                   <div className='text-3xl md:text-4xl font-bold text-white mb-1'>
                     {stat.number}
@@ -120,19 +113,16 @@ export default function Stats() {
                 </div>
               </div>
 
-              {/* Gradient Glow Effect */}
               <div
                 className={`absolute inset-0 bg-linear-to-r ${stat.color} rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10`}></div>
             </div>
           ))}
         </div>
 
-        {/* Bottom Accent */}
         <div className='flex justify-center mt-16'>
           <div className='w-32 h-1 bg-linear-to-r from-lime-400 to-lime-500 rounded-full'></div>
         </div>
 
-        {/* Additional Info */}
         <div className='text-center mt-12'>
           <div className='inline-flex items-center space-x-6 text-gray-400 text-sm'>
             <div className='flex items-center space-x-2'>
@@ -150,14 +140,6 @@ export default function Stats() {
           </div>
         </div>
       </div>
-
-      {/* Shape Divider untuk transisi ke section berikutnya */}
-      <div
-        className='absolute bottom-0 left-0 w-full h-12 bg-white'
-        style={{
-          clipPath: 'polygon(0% 100%, 100% 0%, 100% 100%, 0% 100%)',
-        }}
-      />
     </section>
   )
 }

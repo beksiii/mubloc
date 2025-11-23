@@ -1,4 +1,4 @@
-// components/sections/about-preview.tsx - KEREN VERSION
+// components/sections/about-preview.tsx - FIXED VERSION
 'use client'
 
 import Button from '@/components/ui/Button'
@@ -18,33 +18,7 @@ export default function AboutPreview() {
           <div className='md:order-1'>
             <div className='relative group'>
               {/* Main Visual Card */}
-              <div className='bg-linear-to-br from-lime-400 to-lime-500 rounded-3xl shadow-2xl h-80 flex items-center justify-center p-8 relative overflow-hidden'>
-                {/* Background Pattern */}
-                <div className='absolute inset-0 opacity-20'>
-                  <div className='absolute top-4 left-4 w-8 h-8 bg-white rounded-full'></div>
-                  <div className='absolute bottom-4 right-4 w-12 h-12 bg-white rounded-full'></div>
-                  <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-white rounded-full'></div>
-                </div>
-
-                {/* Content */}
-                <div className='relative z-10 text-center text-white'>
-                  <div className='text-6xl mb-6'>🧭</div>
-                  <h3 className='text-2xl font-bold mb-2 tracking-tight'>
-                    MUBLOC
-                  </h3>
-                  <div className='space-y-1'>
-                    <p className='text-lime-100 font-semibold text-lg'>
-                      WORLD RANKING
-                    </p>
-                    <p className='text-lime-200 text-sm'>
-                      INTERNATIONAL CHAMPIONSHIP
-                    </p>
-                  </div>
-                </div>
-
-                {/* Hover Effect */}
-                <div className='absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl'></div>
-              </div>
+              <div className='rounded-3xl shadow-2xl h-80 relative overflow-hidden bg-white'></div>
 
               {/* Floating Elements */}
               <div className='absolute -top-4 -right-4 w-8 h-8 bg-yellow-400 rounded-full shadow-lg'></div>
