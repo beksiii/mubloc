@@ -16,7 +16,7 @@ function TickerColumn({
     <motion.div
       animate={{ y: reverse ? ['-100%', '0%'] : ['0%', '-100%'] }}
       transition={{
-        duration: 70,
+        duration: 90,
         ease: 'linear',
         repeat: Infinity,
       }}

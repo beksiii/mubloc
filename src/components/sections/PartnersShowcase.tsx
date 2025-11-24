@@ -3,6 +3,7 @@
 
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 export default function PartnersShowcase() {
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -44,10 +45,23 @@ export default function PartnersShowcase() {
   const duplicatedPartners = [...partners, ...partners]
 
   return (
-    <section className='pb-20 bg-white relative overflow-hidden'>
-      <div className='container mx-auto px-6 relative z-10'>
-        <h2 className='text-3xl md:text-4xl font-bold text-center mb-3 text-lime-500 tracking-wide'>
-          Supported By
+    <section className='pb-20 bg-white relative overflow-hidden -mt-1'>
+      <div className='max-w-7xl mx-auto px-6 relative z-10'>
+        <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-custom-dark text-center leading-tight'>
+          OUR{' '}
+          <motion.span
+            className='inline-block'
+            style={{
+              background:
+                'linear-gradient(135deg, #1e3a8a, #8a00c4, #ec4899, #3b82f6)',
+              backgroundSize: '300% 300%',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              color: 'transparent',
+              animation: 'gradientShift 8s ease-in-out infinite',
+            }}>
+            SUPPORTED{' '}
+          </motion.span>
         </h2>
         <p className='text-gray-600 text-center mb-12 max-w-2xl mx-auto text-sm'>
           Partners and sponsors supporting the success of MUBLOC World Ranking

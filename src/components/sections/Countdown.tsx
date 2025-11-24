@@ -32,14 +32,15 @@ export default function Countdown({ targetDate }: { targetDate: string }) {
         flex 
         gap-4 sm:gap-8 md:gap-12 
         text-center font-mono 
-        justify-center md:justify-start
+        justify-center
       '>
       {Object.entries(timeLeft).map(([unit, value]) => (
         <div key={unit} className='flex flex-col items-center'>
-          <div className='text-2xl sm:text-3xl md:text-4xl font-bold text-lime-400'>
+          {/* Ganti warna dari lime-400 ke warna tema */}
+          <div className='text-2xl sm:text-3xl md:text-4xl font-bold text-tertiary'>
             {value.toString().padStart(2, '0')}
           </div>
-          <div className='uppercase text-xs sm:text-sm text-gray-400'>
+          <div className='uppercase text-xs sm:text-sm text-custom-muted'>
             {unit}
           </div>
         </div>

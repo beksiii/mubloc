@@ -45,43 +45,38 @@ export default function Hero() {
         />
       </div>
 
-      {/* CONTENT WRAPPER */}
-      <div className='w-full px-4 md:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-6 lg:gap-8 pt-16 md:pt-20 lg:pt-24 pb-10 relative z-10'>
+      {/* CONTENT WRAPPER - SESUAIKAN DENGAN HEADER */}
+      <div className='w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-4 sm:gap-6 lg:gap-8 pt-14 sm:pt-16 md:pt-20 lg:pt-24 pb-10 relative z-10'>
         {/* LEFT CONTENT */}
         <motion.div
           initial={{ opacity: 0, x: -80 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.2, ease: 'easeOut' }}
-          className='flex-1 max-w-md md:max-w-xl bg-custom-surface/90 p-6 md:p-8 rounded-2xl border border-primary/20 backdrop-blur-xl flex flex-col gap-6 shadow-2xl'>
+          className='flex-1 max-w-md md:max-w-xl bg-custom-surface/90 p-4 sm:p-6 md:p-8 rounded-2xl border border-primary/20 backdrop-blur-xl flex flex-col gap-4 sm:gap-6 shadow-2xl'>
           {/* Title & Description */}
-          <div className='space-y-4'>
-            <motion.h1
+          <div className='space-y-3 sm:space-y-4'>
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
-              className='text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight'
-              style={{
-                background:
-                  'linear-gradient(135deg, #1e3a8a, #8a00c4, #ec4899, #3b82f6)',
-                backgroundSize: '300% 300%',
-                WebkitBackgroundClip: 'text',
-                backgroundClip: 'text',
-                color: 'transparent',
-                animation: 'gradientShift 8s ease-in-out infinite',
-              }}>
-              MUBLOC
-            </motion.h1>
+              className='space-y-2 sm:space-y-3'>
+              <h1 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight'>
+                <span
+                  style={{
+                    background:
+                      'linear-gradient(135deg, #1e3a8a, #8a00c4, #ec4899, #3b82f6)',
+                    backgroundSize: '300% 300%',
+                    WebkitBackgroundClip: 'text',
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                    animation: 'gradientShift 8s ease-in-out infinite',
+                  }}>
+                  WORLD
+                </span>{' '}
+                <span className='text-custom-light'>RANKING EVENT</span>
+              </h1>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className='space-y-3'>
-              <p className='text-xl md:text-2xl font-bold bg-linear-to-r from-tertiary to-accent bg-clip-text text-transparent'>
-                WORLD RANKING EVENT
-              </p>
-
-              <p className='text-base md:text-lg text-custom-muted leading-relaxed font-medium'>
+              <p className='text-sm sm:text-base md:text-lg text-custom-muted leading-relaxed font-medium'>
                 Elite Orienteering Championship where navigation mastery meets
                 physical excellence. Join athletes from across the globe in the
                 ultimate test of skill and endurance.
@@ -94,22 +89,22 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className='space-y-4'>
-            <div className='flex flex-col sm:flex-row gap-3'>
+            className='space-y-3 sm:space-y-4'>
+            <div className='flex flex-col sm:flex-row gap-2 sm:gap-3'>
               <Button
                 variant='gradient'
                 size='lg'
                 href='/registration'
-                className='flex-1 text-center shadow-lg hover:shadow-xl transition-all'>
-                🚀 Register Now
+                className='flex-1 text-center shadow-lg hover:shadow-xl hover:scale-105 transition-all text-sm sm:text-base'>
+                Register Now
               </Button>
 
               <Button
                 variant='outline'
                 size='lg'
                 href='/events'
-                className='flex-1 text-center border-2 hover:scale-105 transition-transform'>
-                📅 View Events
+                className='flex-1 text-center border-2 hover:scale-105 transition-all text-sm sm:text-base'>
+                View Events
               </Button>
             </div>
 
@@ -118,20 +113,23 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.9 }}
-              className='bg-custom-dark/50 rounded-xl p-4 border border-tertiary/20'>
-              <p className='text-custom-muted text-sm font-semibold mb-2 text-center'>
+              className='bg-custom-dark/50 rounded-xl p-3 sm:p-4 border border-tertiary/20'>
+              <p className='text-custom-muted text-xs sm:text-sm font-semibold mb-2 text-center'>
                 REGISTRATION CLOSES IN
               </p>
-              <Countdown targetDate='2026-10-24T00:00:00' />
+              <div className='flex justify-center'>
+                <Countdown targetDate='2026-10-24T00:00:00' />
+              </div>
             </motion.div>
           </motion.div>
         </motion.div>
 
+        {/* RIGHT CONTENT - VERTICAL TICKER */}
         <motion.div
           initial={{ opacity: 0, x: 80, scale: 0.95 }}
           animate={{ opacity: 1, x: 0, scale: 1 }}
           transition={{ duration: 1.2, ease: 'easeOut' }}
-          className='relative flex-1 w-full md:w-auto mt-6 md:mt-0 hidden md:flex justify-center'>
+          className='relative flex-1 w-full md:w-auto mt-4 sm:mt-6 md:mt-0 hidden md:flex justify-center'>
           <VerticalTicker />
         </motion.div>
       </div>
@@ -141,8 +139,8 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.5 }}
-        className='absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20'>
-        <div className='flex flex-col items-center space-y-2'>
+        className='absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 z-20'>
+        <div className='flex flex-col items-center space-y-1 sm:space-y-2'>
           <motion.span
             animate={{ opacity: [0.5, 1, 0.5] }}
             transition={{ duration: 2, repeat: Infinity }}
@@ -151,13 +149,13 @@ export default function Hero() {
           </motion.span>
 
           <motion.div
-            animate={{ y: [0, 8, 0] }}
+            animate={{ y: [0, 6, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            className='w-6 h-8 border-2 border-accent rounded-full flex justify-center relative'>
+            className='w-5 h-7 sm:w-6 sm:h-8 border-2 border-accent rounded-full flex justify-center relative'>
             <motion.div
               animate={{ opacity: [0.3, 1, 0.3] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className='w-1 h-3 bg-accent rounded-full mt-1'
+              className='w-1 h-2 sm:h-3 bg-accent rounded-full mt-1'
             />
           </motion.div>
         </div>

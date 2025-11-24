@@ -20,7 +20,6 @@
 /* BASE STYLES */
 html {
   background-color: var(--color-bg);
-  color: var(--color-text);
   scroll-behavior: smooth;
 }
 
@@ -31,7 +30,6 @@ body {
   font-family: system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   background-color: var(--color-bg);
-  color: var(--color-text);
 }
 
 /* =========================================

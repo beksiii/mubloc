@@ -1,4 +1,7 @@
 // components/sections/upcoming-events.tsx
+'use client'
+import { motion } from 'framer-motion'
+
 export default function UpcomingEvents() {
   const events = [
     {
@@ -26,35 +29,48 @@ export default function UpcomingEvents() {
 
   const getCategoryColor = (category: string) => {
     const colors = {
-      ELITE: 'bg-red-500',
-      JUNIOR: 'bg-blue-500',
+      ELITE: 'bg-accent',
+      JUNIOR: 'bg-tertiary',
       BEGINNER: 'bg-green-500',
     }
     return colors[category as keyof typeof colors] || 'bg-gray-500'
   }
 
   return (
-    <section id='events' className='py-20 bg-white'>
-      <div className='container mx-auto px-6'>
+    <section id='events' className='py-20 bg-white relative -mt-1'>
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         {/* Section Header */}
         <div className='text-center mb-16'>
-          <h2 className='text-4xl md:text-5xl font-bold text-gray-900 mb-4'>
-            Upcoming Events
+          <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-primary leading-tight'>
+            UPCOMING{' '}
+            <motion.span
+              className='inline-block'
+              style={{
+                background:
+                  'linear-gradient(135deg, #1e3a8a, #8a00c4, #ec4899, #3b82f6)',
+                backgroundSize: '300% 300%',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                color: 'transparent',
+                animation: 'gradientShift 8s ease-in-out infinite',
+              }}>
+              EVENT
+            </motion.span>
           </h2>
-          <p className='text-xl text-gray-600 max-w-2xl mx-auto'>
+          <p className='text-lg sm:text-xl text-custom-muted max-w-2xl mx-auto'>
             Jadwal kejuaraan orienteering MUBLOC 2026. Siapkan strategi dan
             kemampuan navigasi Anda!
           </p>
         </div>
 
         {/* Events Grid */}
-        <div className='grid md:grid-cols-2 gap-8'>
+        <div className='grid md:grid-cols-2 gap-6 lg:gap-8'>
           {events.map(event => (
             <div
               key={event.id}
-              className='bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group hover:-translate-y-2'>
+              className='card-cyber overflow-hidden group hover:-translate-y-2'>
               {/* Event Image */}
-              <div className='relative h-48 bg-linear-to-br from-lime-400 to-lime-600 overflow-hidden'>
+              <div className='relative h-48 bg-linear-to-br from-primary to-accent overflow-hidden'>
                 <div className='absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors'></div>
                 <div className='absolute top-4 left-4'>
                   <span
@@ -73,20 +89,20 @@ export default function UpcomingEvents() {
 
               {/* Event Content */}
               <div className='p-6'>
-                <h3 className='text-xl font-bold text-gray-900 mb-3 group-hover:text-lime-600 transition-colors'>
+                <h3 className='text-xl font-bold text-custom-dark mb-3 group-hover:text-accent transition-colors'>
                   {event.title}
                 </h3>
-                <p className='text-gray-600 mb-4 text-sm leading-relaxed'>
+                <p className='text-custom-muted mb-4 text-sm leading-relaxed'>
                   {event.description}
                 </p>
 
                 {/* Event Details */}
                 <div className='space-y-3 mb-6'>
-                  <div className='flex items-center text-gray-500'>
+                  <div className='flex items-center text-custom-muted'>
                     <span className='mr-3'>📅</span>
                     <span className='text-sm'>{event.date}</span>
                   </div>
-                  <div className='flex items-center text-gray-500'>
+                  <div className='flex items-center text-custom-muted'>
                     <span className='mr-3'>📍</span>
                     <span className='text-sm'>{event.location}</span>
                   </div>
@@ -94,10 +110,10 @@ export default function UpcomingEvents() {
 
                 {/* Action Buttons */}
                 <div className='flex space-x-3'>
-                  <button className='flex-1 bg-lime-500 text-white py-2 px-4 rounded-lg hover:bg-lime-600 transition-colors text-sm font-semibold'>
+                  <button className='flex-1 bg-linear-to-r from-primary to-accent text-white py-2 px-4 rounded-lg hover:shadow-lg transition-all text-sm font-semibold'>
                     Daftar Sekarang
                   </button>
-                  <button className='flex-1 border border-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:border-lime-400 hover:text-lime-600 transition-colors text-sm'>
+                  <button className='flex-1 border border-gray-300 text-custom-muted py-2 px-4 rounded-lg hover:border-accent hover:text-accent transition-colors text-sm'>
                     Details
                   </button>
                 </div>
