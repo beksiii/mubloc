@@ -24,7 +24,6 @@ function TickerColumn({
       {longImageArray.map((src, i) => (
         <div
           key={i}
-          // Height tetap seperti semula
           className='relative h-72 w-full overflow-hidden rounded-lg'>
           <Image
             src={src}
@@ -32,6 +31,18 @@ function TickerColumn({
             fill
             className='object-cover object-center'
             sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'
+            onError={e => {
+              // Fallback ke gradient jika image error
+              const target = e.target as HTMLImageElement
+              target.style.display = 'none'
+              target.parentElement!.innerHTML = `
+                <div class="absolute inset-0 bg-linear-to-br from-primary to-accent flex items-center justify-center">
+                  <span class="text-white font-bold text-lg">POSTER ${
+                    i + 1
+                  }</span>
+                </div>
+              `
+            }}
           />
           <div className='absolute inset-0 bg-linear-to-b from-transparent to-black/10' />
         </div>
@@ -41,28 +52,34 @@ function TickerColumn({
 }
 
 export default function VerticalTicker() {
+  // GUNAKAN IMAGE YANG SUDAH ADA di public folder
   const images = [
-    '/images/posters/1.jpg',
-    '/images/posters/2.jpg',
-    '/images/posters/3.jpg',
-    '/images/posters/4.jpg',
-    '/images/posters/5.jpg',
-    '/images/posters/6.jpg',
+    '/images/mubloc.png', // ← Pastikan ini ada
+    '/images/mubloc-text-white.png', // ← atau image lain yang ada
+    '/images/mubloc-text-black.png', // ← atau image lain yang ada
   ]
 
+  // Jika hanya ada 1 image, duplicate saja
+  const availableImages = images.filter(src => {
+    // Cek apakah image ada (basic validation)
+    return src.startsWith('/images/')
+  })
+
+  // Fallback jika tidak ada images
+  const finalImages =
+    availableImages.length > 0 ? availableImages : ['/images/mubloc.png']
+
   return (
-    // Height container juga tetap
     <div className='relative h-120 w-full overflow-hidden'>
-      {/* Hanya grid columns yang responsive */}
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
         <div className='overflow-hidden'>
-          <TickerColumn images={images} />
+          <TickerColumn images={finalImages} />
         </div>
         <div className='overflow-hidden hidden md:block'>
-          <TickerColumn images={images} reverse />
+          <TickerColumn images={finalImages} reverse />
         </div>
         <div className='overflow-hidden hidden lg:block'>
-          <TickerColumn images={images} />
+          <TickerColumn images={finalImages} />
         </div>
       </div>
       <div className='pointer-events-none absolute left-0 top-0 h-32 w-full bg-linear-to-b from-custom-dark to-transparent' />

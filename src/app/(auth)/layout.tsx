@@ -1,12 +1,24 @@
+// app/(auth)/layout.tsx - SIMPLE FIX
+'use client'
+
+import { usePathname } from 'next/navigation'
+
 export default function AuthLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const pathname = usePathname()
+
+  // Jika registration page, skip layout khusus
+  if (pathname?.includes('/registration')) {
+    return <>{children}</>
+  }
+
+  // Untuk login dll, pakai centered layout
   return (
     <div className='min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
       <div className='max-w-md w-full space-y-8'>
-        {/* Logo dan Title */}
         <div className='text-center'>
           <h1 className='text-3xl font-bold text-gray-900'>
             Orienteering Championship
